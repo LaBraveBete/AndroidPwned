@@ -12,9 +12,9 @@ import java.util.regex.Pattern;
 
 public class EmailCheck extends AppCompatActivity {
 
-    Pattern emailPattern = Pattern.compile("\\b(?!^.{256})[a-zA-Z0-9.-_+]+@[a-zA-Z0-9.-_]+\\.[a-zA-Z]+\\b");
+
     String email;
-    private Button goButtonEmail;
+    public Button goButtonEmail;
 
     EditText email_input;
 
@@ -24,25 +24,24 @@ public class EmailCheck extends AppCompatActivity {
         setContentView(R.layout.activity_email_check);
 
 
-        email_input = (EditText) findViewById(R.id.email_input_field);
-        goButtonEmail = (Button) findViewById(R.id.goButtonEmail);
+        email_input =  findViewById(R.id.email_input_field);
+        goButtonEmail = findViewById(R.id.goButtonEmail);
         goButtonEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 email= email_input.getText().toString();
-                if ()
+                if (isValidEmail(email))
                 {
-                    confirmationToast(email);
+                    String confirmation = "Checking for : " + email;
+                    confirmationToast(confirmation);
+
 
                 }
                 else
                 {
-                    //String nop = 'nop';
-                    //confirmationToast();
+                    email_input.setError("Please enter a valid email address ");
                 }
-
-
 
 
 
@@ -52,6 +51,14 @@ public class EmailCheck extends AppCompatActivity {
 
     private void confirmationToast (String text){
         Toast.makeText(this,text,Toast.LENGTH_SHORT).show();
+    }
+
+    public static boolean isValidEmail (String email)
+    {
+        String EMAIL_REGEX = "\\b(?!^.{256})[a-zA-Z0-9.-_+]+@[a-zA-Z0-9.-_]+\\.[a-zA-Z]+\\b";
+        Pattern EMAIL_PATTERN = Pattern.compile(EMAIL_REGEX,Pattern.CASE_INSENSITIVE);
+        Matcher EMAIL_MATCHER = EMAIL_PATTERN.matcher(email);
+        return EMAIL_MATCHER.find();
     }
 
 
