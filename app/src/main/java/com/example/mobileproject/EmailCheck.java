@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.regex.Matcher;
@@ -15,6 +16,7 @@ public class EmailCheck extends AppCompatActivity {
 
     String email;
     public Button goButtonEmail;
+    public TextView Email_response;
 
     EditText email_input;
 
@@ -25,6 +27,7 @@ public class EmailCheck extends AppCompatActivity {
 
 
         email_input =  findViewById(R.id.email_input_field);
+        Email_response = findViewById(R.id.Email_response);
         goButtonEmail = findViewById(R.id.goButtonEmail);
         goButtonEmail.setOnClickListener(new View.OnClickListener() {
             @Override

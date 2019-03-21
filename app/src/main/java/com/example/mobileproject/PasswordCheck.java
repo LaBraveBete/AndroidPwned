@@ -20,6 +20,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
 import java.io.UnsupportedEncodingException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class PasswordCheck extends AppCompatActivity {
@@ -29,7 +31,7 @@ public class PasswordCheck extends AppCompatActivity {
     String Tail;
     public Button goButtonPassword;
     public TextView Password_response;
-    private RequestQueue PASSWORD_API;
+
 
 
 
@@ -125,13 +127,14 @@ public class PasswordCheck extends AppCompatActivity {
                         boolean isPresent = response.contains(Tail);
                         if(isPresent)
                         {
-                          String fucked = "You are fucked!! Change your password immediately! Your password appears "+ "42" + "in the database." ;//password occurrence instead of 42
+                          String fucked = "You are fucked!! Change your password immediately! Your password appears "+ "42" + " times in the database." ;//password occurrence instead of 42
                           Password_response.setText(fucked);
                             //Password_response.setText(Password_Occurrence(response));
                         }
                         else
                         {
-                            Password_response.setText(response);
+                            //Password_response.setText(response);
+                            Password_quality();
                         }
 
                     }
@@ -152,6 +155,32 @@ public class PasswordCheck extends AppCompatActivity {
         String temp = response.substring(position1);
        int position2 =temp.indexOf("\n");
         return Integer.valueOf(response.substring(position1,position2));
+
+    }
+
+    private void Password_quality()
+    {
+        final Pattern PASSWORD_PATTERN =
+                Pattern.compile("^" +
+                        "(?=.*[0-9])" +         //at least 1 digit
+                        "(?=.*[a-z])" +         //at least 1 lower case letter
+                        "(?=.*[A-Z])" +         //at least 1 upper case letter
+                        "(?=.*[a-zA-Z])" +      //any letter
+                        "(?=.*[@#$%^&+=À-ÿ])" +    //at least 1 special character
+                        //"(?=\\S+$)" +           //no white spaces
+                        ".{4,}" +               //at least 4 characters
+                        "$",Pattern.CASE_INSENSITIVE);
+        Matcher PASSWORD_MATCHER = PASSWORD_PATTERN.matcher(password);
+        if(PASSWORD_MATCHER.find())
+        {
+            String safe = "Your Password is safe and Strong";
+            Password_response.setText(safe);
+        }
+        else
+        {
+            String safe = "Your password is safe but not strong; consider adding some uppercase letters / special character";
+            Password_response.setText(safe);
+        }
 
     }
 
