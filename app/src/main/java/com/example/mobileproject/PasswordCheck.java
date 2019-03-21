@@ -5,9 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 //import java.nio.charset.StandardCharsets; //if StandardCharsets.UTF_8
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
@@ -20,6 +28,10 @@ public class PasswordCheck extends AppCompatActivity {
     String Head;
     String Tail;
     public Button goButtonPassword;
+    public TextView Password_response;
+    private RequestQueue PASSWORD_API;
+
+
 
     EditText password_input;
 
@@ -30,6 +42,7 @@ public class PasswordCheck extends AppCompatActivity {
 
         password_input =  findViewById(R.id.password_input_field);
         goButtonPassword = findViewById(R.id.goButtonPassword);
+        Password_response = findViewById(R.id.Password_response);
         goButtonPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,8 +52,9 @@ public class PasswordCheck extends AppCompatActivity {
                 {
                     String confirmation = "Checking for : " + password;
                     confirmationToast(confirmation);
-                    Call_Password_API(password);
 
+
+                    Call_Password_API(password);
                 }
                 else
                 {
@@ -95,10 +109,49 @@ public class PasswordCheck extends AppCompatActivity {
     private  void Call_Password_API(String password)
     {
         String SHA1_password = encryptPasswordToSHA1(password);
-        confirmationToast(SHA1_password);
+        String stringSHA1 = "SHA1 is : " + SHA1_password;
+        Password_response.setText(stringSHA1);
         Head = SHA1_password.substring(0,5);
         Tail = SHA1_password.substring(5);
 
+
+        RequestQueue PASSWORD_API= Volley.newRequestQueue(this);
+        String URL_Password ="https://api.pwnedpasswords.com/range/"+Head;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_Password,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        boolean isPresent = response.contains(Tail);
+                        if(isPresent)
+                        {
+                          String fucked = "You are fucked!! Change your password immediately! Your password appears "+ "42" + "in the database." ;//password occurrence instead of 42
+                          Password_response.setText(fucked);
+                            //Password_response.setText(Password_Occurrence(response));
+                        }
+                        else
+                        {
+                            Password_response.setText(response);
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                String stringFail = "That didn't work!";
+                Password_response.setText(stringFail);
+            }
+        });
+        PASSWORD_API.add(stringRequest);
+
+    }
+
+    private Integer Password_Occurrence(String response)
+    {
+        int position1 =response.indexOf(Tail) + 36; //35 character in tail + : before number of occurrence
+        String temp = response.substring(position1);
+       int position2 =temp.indexOf("\n");
+        return Integer.valueOf(response.substring(position1,position2));
 
     }
 
