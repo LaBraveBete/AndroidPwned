@@ -15,7 +15,8 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="79dp"
         android:layout_marginRight="79dp"
-        android:text="email page" />
+        android:text="email_page_title"
+        />
 
     <EditText
         android:id="@+id/email_input_field"
@@ -29,7 +30,8 @@
         android:layout_marginTop="132dp"
         android:ems="10"
         android:hint="email (bob@alice.com)"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        />
 
     <Button
         android:id="@+id/goButtonEmail"
