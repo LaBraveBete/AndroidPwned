@@ -29,11 +29,9 @@ public class PasswordCheck extends AppCompatActivity {
     String password;
     String Head;
     String Tail;
+
     public Button goButtonPassword;
     public TextView Password_response;
-
-
-
 
     EditText password_input;
 
@@ -54,19 +52,12 @@ public class PasswordCheck extends AppCompatActivity {
                 {
                     String confirmation = "Checking for : " + password;
                     confirmationToast(confirmation);
-
-
                     Call_Password_API(password);
                 }
                 else
                 {
                     password_input.setError("Please enter a password ");
                 }
-
-
-
-
-
             }
         });
     }
@@ -127,9 +118,8 @@ public class PasswordCheck extends AppCompatActivity {
                         boolean isPresent = response.contains(Tail);
                         if(isPresent)
                         {
-                          String fucked = "You are fucked!! Change your password immediately! Your password appears "+ "42" + " times in the database." ;//password occurrence instead of 42
+                          String fucked = "You are fucked!! Change your password immediately! Your password appears "+ Password_Occurrence(response) + " times in the database." ;//password occurrence instead of 42
                           Password_response.setText(fucked);
-                            //Password_response.setText(Password_Occurrence(response));
                         }
                         else
                         {
@@ -149,12 +139,12 @@ public class PasswordCheck extends AppCompatActivity {
 
     }
 
-    private Integer Password_Occurrence(String response)
+    private String Password_Occurrence(String response)
     {
         int position1 =response.indexOf(Tail) + 36; //35 character in tail + : before number of occurrence
         String temp = response.substring(position1);
-       int position2 =temp.indexOf("\n");
-        return Integer.valueOf(response.substring(position1,position2));
+        int position2 =temp.indexOf("\n") + position1;
+        return response.substring(position1,position2);
 
     }
 
