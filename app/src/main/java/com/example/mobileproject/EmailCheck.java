@@ -29,6 +29,11 @@ public class EmailCheck extends AppCompatActivity {
     public Button goButtonEmail;
     public TextView Email_response;
 
+    String EMAIL_ACCOUNT_API_URL = "https://haveibeenpwned.com/api/v2/breachedaccount/";
+    String PASTED_ACCOUNT_API_URL = "https://haveibeenpwned.com/api/v2/pasteaccount/";
+
+    boolean PwnedEmail;
+
     EditText email_input;
 
     @Override
@@ -49,7 +54,11 @@ public class EmailCheck extends AppCompatActivity {
                 {
                     String confirmation = "Checking for : " + email;
                     confirmationToast(confirmation);
-                    requestWithSomeHttpHeaders(email);
+                    requestWithSomeHttpHeaders(email, EMAIL_ACCOUNT_API_URL);
+                    if(PwnedEmail)
+                    {
+                        requestWithSomeHttpHeaders(email, PASTED_ACCOUNT_API_URL);
+                    }
 
 
                 }
@@ -77,10 +86,10 @@ public class EmailCheck extends AppCompatActivity {
     }
 
 
-    public void requestWithSomeHttpHeaders(String email)
+    public void requestWithSomeHttpHeaders(String email, String API_URL)
     {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "https://haveibeenpwned.com/api/v2/breachedaccount/" + email;
+        String url = API_URL + email;
         StringRequest getRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>()
                 {
@@ -89,6 +98,7 @@ public class EmailCheck extends AppCompatActivity {
                     {
                         Email_response.setText(response);
                         Log.d("Response", response);
+                        PwnedEmail = true;
                     }
                 },
                 new Response.ErrorListener()
@@ -105,6 +115,7 @@ public class EmailCheck extends AppCompatActivity {
                         {
                             String Fine_email = "you'r fine ";
                             Email_response.setText(Fine_email);
+                            PwnedEmail = false;
                         }
                     }
                 }
