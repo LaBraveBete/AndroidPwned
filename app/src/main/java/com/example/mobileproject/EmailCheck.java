@@ -85,8 +85,8 @@ public class EmailCheck extends AppCompatActivity {
                 new Response.Listener<String>()
                 {
                     @Override
-                    public void onResponse(String response) {
-                        // response
+                    public void onResponse(String response)
+                    {
                         Email_response.setText(response);
                         Log.d("Response", response);
                     }
@@ -94,14 +94,24 @@ public class EmailCheck extends AppCompatActivity {
                 new Response.ErrorListener()
                 {
                     @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("ERROR","error => "+error.toString());
-                        Email_response.setText(error.toString());
+                    public void onErrorResponse(VolleyError error)
+                    {
+                        if(error.networkResponse.statusCode != 404 )
+                        {
+                            Log.d("ERROR", "error => " + error.toString());
+                            Email_response.setText(error.networkResponse.statusCode);
+                        }
+                        else
+                        {
+                            String Fine_email = "you'r fine ";
+                            Email_response.setText(Fine_email);
+                        }
                     }
                 }
         ) {
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
+            public Map<String, String> getHeaders()
+            {
                 Map<String, String>  params = new HashMap<String, String>();
                 params.put("User-Agent", "School-project-Android-app");
 
