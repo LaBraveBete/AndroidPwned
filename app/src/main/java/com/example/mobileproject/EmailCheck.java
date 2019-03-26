@@ -2,12 +2,23 @@ package com.example.mobileproject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,6 +49,7 @@ public class EmailCheck extends AppCompatActivity {
                 {
                     String confirmation = "Checking for : " + email;
                     confirmationToast(confirmation);
+                    requestWithSomeHttpHeaders(email);
 
 
                 }
@@ -65,6 +77,40 @@ public class EmailCheck extends AppCompatActivity {
     }
 
 
+    public void requestWithSomeHttpHeaders(String email)
+    {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "https://haveibeenpwned.com/api/v2/breachedaccount/" + email;
+        StringRequest getRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>()
+                {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        Email_response.setText(response);
+                        Log.d("Response", response);
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("ERROR","error => "+error.toString());
+                        Email_response.setText(error.toString());
+                    }
+                }
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String>  params = new HashMap<String, String>();
+                params.put("User-Agent", "School-project-Android-app");
+
+                return params;
+            }
+        };
+        queue.add(getRequest);
+
+    }
 }
 
 
