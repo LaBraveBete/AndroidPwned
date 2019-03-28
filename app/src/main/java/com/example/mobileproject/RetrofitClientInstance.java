@@ -7,7 +7,7 @@ public class RetrofitClientInstance
 {
 
     private static Retrofit retrofit;
-    private static final String BREACHES_URL = "https://haveibeenpwned.com/api/v2/breaches";
+    private static final String BREACHES_URL = "https://haveibeenpwned.com/api/v2/";
 
     public static Retrofit getRetrofitInstance()
     {

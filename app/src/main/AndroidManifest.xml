@@ -13,12 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".HowItWork"></activity>
-        <activity
-            android:name=".BiggestLeak"
-            android:label="@string/title_activity_biggest_leak"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".PasswordCheck" />
         <activity android:name=".EmailCheck" />
+        <activity android:name=".BiggestLeak" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

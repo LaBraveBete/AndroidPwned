@@ -34,7 +34,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
             super(itemView);
             mView = itemView;
 
-            txtTitle = mView.findViewById(R.id.title2);
+            txtTitle = mView.findViewById(R.id.title_customview);
             coverImage = mView.findViewById(R.id.coverImage);
         }
     }

@@ -9,7 +9,7 @@ public class EndPoint {
 
     public interface GetDataService {
 
-        @GET("/photos")
-        Call<List<DataModel>> getAllPhotos();
+        @GET("/breaches")
+        Call<List<DataModel>> getAllBreaches();
     }
 }
