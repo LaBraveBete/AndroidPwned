@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -17,7 +18,7 @@ import retrofit2.Response;
 
 public class BiggestLeak extends AppCompatActivity {
 
-    private CustomAdapter adapter;
+
     private RecyclerView recyclerView;
     ProgressDialog progressDoalog;
 
@@ -32,31 +33,34 @@ public class BiggestLeak extends AppCompatActivity {
 
 
 
-        EndPoint.GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(EndPoint.GetDataService.class);
+        GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
         Call<List<DataModel>> call = service.getAllBreaches();
         call.enqueue(new Callback<List<DataModel>>() {
             @Override
             public void onResponse(Call<List<DataModel>> call, Response<List<DataModel>> response) {
                 progressDoalog.dismiss();
-                generateDataList(response.body());
+                //generateDataList(response.body());
+               // Log.d("message error",getName().toString());
             }
 
             @Override
             public void onFailure(Call<List<DataModel>> call, Throwable t) {
                 progressDoalog.dismiss();
-                Toast.makeText(BiggestLeak.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BiggestLeak.this, t.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("message error",t.toString());
             }
         });
     }
 
 
-    private void generateDataList(List<DataModel> photoList) {
-        recyclerView = findViewById(R.id.customRecyclerView);
-        adapter = new CustomAdapter(this,photoList);
+    private void generateDataList(List<DataModel> breaches) {
+        recyclerView = findViewById(R.id.RecyclerView);
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(BiggestLeak.this);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+        //recyclerView.setAdapter(adapter);
     }
+
 
 }
 
