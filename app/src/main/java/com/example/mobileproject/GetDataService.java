@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 public interface GetDataService
     {
 
-            @GET("photos")//breaches
+            @GET("breaches")//breaches
             Call<List<DataModel>> getAllBreaches();
 
 

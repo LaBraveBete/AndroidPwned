@@ -18,6 +18,7 @@ public class DataModel {
     @SerializedName("Domain")
     private String Domain;
 
+    /*
     @SerializedName("BreachDate")
     private Date BreachDate;
 
@@ -26,7 +27,7 @@ public class DataModel {
 
     @SerializedName("ModifiedDate")
     private DateTime ModifiedDate;
-
+*/
     @SerializedName("PwnCount")
     private Integer PwnCount;
 
@@ -55,14 +56,14 @@ public class DataModel {
     private String LogoPathl;
 
 
-    public DataModel(String Name, String Title, String Domain, Date BreachDate, DateTime AddedDate, DateTime ModifiedDate, Integer PwnCount, String Description, String[] DataClasses, boolean IsVerified, boolean IsFabricated, boolean IsSensitive, boolean IsRetired, boolean IsSpamList, String LogoPathl)
+    public DataModel(String Name, String Title, String Domain,  Integer PwnCount, String Description, String[] DataClasses, boolean IsVerified, boolean IsFabricated, boolean IsSensitive, boolean IsRetired, boolean IsSpamList, String LogoPathl)
     {
         this.Name = Name;
         this.Title = Title;
         this.Domain = Domain;
-        this.BreachDate = BreachDate;
-        this.AddedDate = AddedDate;
-        this.ModifiedDate = ModifiedDate;
+       // this.BreachDate = BreachDate;
+        //this.AddedDate = AddedDate;
+        //this.ModifiedDate = ModifiedDate; //Date BreachDate, DateTime AddedDate, DateTime ModifiedDate,
         this.PwnCount = PwnCount;
         this.Description = Description;
         this.DataClasses = DataClasses;
@@ -97,7 +98,7 @@ public class DataModel {
     public void setDomain(String domain) {
         Domain = domain;
     }
-
+/*
     public Date getBreachDate() {
         return BreachDate;
     }
@@ -121,7 +122,7 @@ public class DataModel {
     public void setModifiedDate(DateTime modifiedDate) {
         ModifiedDate = modifiedDate;
     }
-
+*/
     public Integer getPwnCount() {
         return PwnCount;
     }
