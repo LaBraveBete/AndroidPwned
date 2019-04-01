@@ -52,11 +52,11 @@ public class DataModel {
     @SerializedName("IsSpamList")
     private boolean IsSpamList;
 
-    @SerializedName("LogoPathl")
-    private String LogoPathl;
+    @SerializedName("LogoPath")
+    private String LogoPath;
 
 
-    public DataModel(String Name, String Title, String Domain,  Integer PwnCount, String Description, String[] DataClasses, boolean IsVerified, boolean IsFabricated, boolean IsSensitive, boolean IsRetired, boolean IsSpamList, String LogoPathl)
+    public DataModel(String Name, String Title, String Domain,  Integer PwnCount, String Description, String[] DataClasses, boolean IsVerified, boolean IsFabricated, boolean IsSensitive, boolean IsRetired, boolean IsSpamList, String LogoPath)
     {
         this.Name = Name;
         this.Title = Title;
@@ -72,7 +72,7 @@ public class DataModel {
         this.IsSensitive = IsSensitive;
         this.IsRetired = IsRetired;
         this.IsSpamList = IsSpamList;
-        this.LogoPathl = LogoPathl;
+        this.LogoPath = LogoPath;
     }
 
     public String getName() {
@@ -187,11 +187,11 @@ public class DataModel {
         IsSpamList = spamList;
     }
 
-    public String getLogoPathl() {
-        return LogoPathl;
+    public String getLogoPath() {
+        return LogoPath;
     }
 
-    public void setLogoPathl(String logoPathl) {
-        LogoPathl = logoPathl;
+    public void setLogoPath(String logoPathl) {
+        LogoPath = logoPathl;
     }
 }

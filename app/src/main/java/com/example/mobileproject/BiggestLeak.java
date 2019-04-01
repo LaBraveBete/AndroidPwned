@@ -9,7 +9,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 
-
 import java.util.List;
 
 import retrofit2.Call;
@@ -18,14 +17,14 @@ import retrofit2.Response;
 
 public class BiggestLeak extends AppCompatActivity {
 
-
+    CustomAdapter adapter;
     private RecyclerView recyclerView;
     ProgressDialog progressDoalog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_biggest_leak);
 
         progressDoalog = new ProgressDialog(BiggestLeak.this);
         progressDoalog.setMessage("Loading....");
@@ -39,9 +38,21 @@ public class BiggestLeak extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<DataModel>> call, Response<List<DataModel>> response) {
                 progressDoalog.dismiss();
-                //generateDataList(response.body());
-               // Log.d("message error",getName().toString());
+
+
+
+
+                List<DataModel> Test =response.body();
+                for (DataModel t: Test)
+                {
+
+                    Log.d("Test de la mort", t.getName());
+                    Log.d("Test de la mort", t.getLogoPath());
+                }
                 Toast.makeText(BiggestLeak.this, "on response ok", Toast.LENGTH_SHORT).show();
+                generateDataList(response.body());
+
+
             }
 
             @Override
@@ -53,13 +64,12 @@ public class BiggestLeak extends AppCompatActivity {
         });
     }
 
-
-    private void generateDataList(List<DataModel> breaches) {
-        recyclerView = findViewById(R.id.RecyclerView);
-
+    private void generateDataList(List<DataModel> photoList) {
+        recyclerView = findViewById(R.id.customRecyclerView);
+        adapter = new CustomAdapter(this,photoList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(BiggestLeak.this);
         recyclerView.setLayoutManager(layoutManager);
-        //recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
     }
 
 
