@@ -19,16 +19,16 @@ public class BiggestLeak extends AppCompatActivity {
 
     CustomAdapter adapter;
     private RecyclerView recyclerView;
-    ProgressDialog progressDoalog;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_biggest_leak);
 
-        progressDoalog = new ProgressDialog(BiggestLeak.this);
-        progressDoalog.setMessage("Loading....");
-        progressDoalog.show();
+        progressDialog = new ProgressDialog(BiggestLeak.this);
+        progressDialog.setMessage("Loading....");
+        progressDialog.show();
 
 
 
@@ -37,11 +37,11 @@ public class BiggestLeak extends AppCompatActivity {
         call.enqueue(new Callback<List<DataModel>>() {
             @Override
             public void onResponse(Call<List<DataModel>> call, Response<List<DataModel>> response) {
-                progressDoalog.dismiss();
+                progressDialog.dismiss();
 
 
 
-
+                /*
                 List<DataModel> Test =response.body();
                 for (DataModel t: Test)
                 {
@@ -49,6 +49,7 @@ public class BiggestLeak extends AppCompatActivity {
                     Log.d("Test de la mort", t.getName());
                     Log.d("Test de la mort", t.getLogoPath());
                 }
+                */
                 Toast.makeText(BiggestLeak.this, "on response ok", Toast.LENGTH_SHORT).show();
                 generateDataList(response.body());
 
@@ -57,7 +58,7 @@ public class BiggestLeak extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<DataModel>> call, Throwable t) {
-                progressDoalog.dismiss();
+                progressDialog.dismiss();
                 Toast.makeText(BiggestLeak.this, t.toString(), Toast.LENGTH_SHORT).show();
                 Log.d("message error",t.toString());
             }
