@@ -48,7 +48,7 @@ public class PasswordCheckController {
     }
 
     public void passwordFound(String Occurrence){
-        String fucked = "You are fucked!! Change your password immediately! Your password appears "+ Occurrence + " times in the database." ;
+        String fucked = "You password have been found!! Change your password immediately! Your password appears "+ Occurrence + " times in the database." ;
         Password_response.setText(fucked);
     }
 
