@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2c3e50"
     tools:context=".View.MainActivity">
 
     <TextView
@@ -12,7 +13,9 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="47dp"
-        android:text="have i been pwned?" />
+        android:text="Have I Been Pwned?"
+        android:textSize="24dp"
+        android:textColor="#FFFFFF"/>
 
     <Button
         android:id="@+id/ToEmailButton"

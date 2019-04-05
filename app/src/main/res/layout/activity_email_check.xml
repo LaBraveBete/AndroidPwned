@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2c3e50"
     tools:context=".View.MainActivity">
 
     <TextView
@@ -15,22 +16,26 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="79dp"
         android:layout_marginRight="79dp"
-        android:text="email_page_title"
+        android:text="Check Your Email"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"
         />
 
     <EditText
         android:id="@+id/email_input_field"
-        android:layout_width="241dp"
+        android:layout_width="wrap_content"
         android:layout_height="87dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="81dp"
         android:layout_marginLeft="81dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginTop="155dp"
         android:ems="10"
         android:hint="email (bob@alice.com)"
+        android:textColorHint="#FFFFFF"
         android:inputType="textEmailAddress"
+        android:textColor="#FFFFFF"
         />
 
     <Button
@@ -42,8 +47,12 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="71dp"
         android:layout_marginLeft="71dp"
-        android:layout_marginTop="244dp"
-        android:text="GO!" />
+        android:layout_marginTop="255dp"
+        android:text="GO!"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/menu_button"
+        />
 
     <TextView
         android:id="@+id/Email_response"
@@ -54,7 +63,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="74dp"
         android:layout_marginLeft="74dp"
-        android:layout_marginBottom="152dp" />
+        android:layout_marginBottom="152dp"
+        android:textSize="20dp"
+        android:textColor="#FFFFFF"/>
 
 
 </RelativeLayout>

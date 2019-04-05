@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2c3e50"
     tools:context=".View.MainActivity">
 
     <TextView
-        android:layout_width="217dp"
-        android:layout_height="59dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="193dp"
-        android:text="explanation page" />
+        android:layout_marginTop="30dp"
+        android:text="@string/large_text"
+        android:textColor="#FFFFFF"
+        />
 
 
 </RelativeLayout>

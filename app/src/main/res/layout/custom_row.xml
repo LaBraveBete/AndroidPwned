@@ -9,6 +9,7 @@
     card_view:cardUseCompatPadding="true">
 
     <RelativeLayout
+        android:background="#2c3e50"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -32,6 +33,7 @@
             android:layout_toRightOf="@+id/coverImage"
             android:lines="2"
             android:paddingTop="20dp"
+            android:textColor="#FFFFFF"
             android:text="title" />
 
         <TextView
@@ -46,6 +48,7 @@
             android:lines="2"
             android:paddingTop="20dp"
             android:layout_marginTop="40dp"
+            android:textColor="#FFFFFF"
             android:text="title" />
 
         <TextView
@@ -57,7 +60,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="110dp"
-
+            android:textColor="#FFFFFF"
             android:text="TextView" />
 
 
