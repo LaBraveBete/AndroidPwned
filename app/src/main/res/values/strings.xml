@@ -2,33 +2,21 @@
     <string name="app_name">mobileProject</string>
     <string name="title_activity_email_">Email_Activity</string>
     <string name="large_text">
-        "Material is the metaphor.\n\n"
+        "For all people paranoid here are some explications \n\n"
 
-        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
-        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
-        "technologically advanced and open to imagination and magic.\n"
-        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
-        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
-        "flexibility of the material creates new affordances that supercede those in the physical "
-        "world, without breaking the rules of physics.\n"
-        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
-        "interact, and exist in space and in relation to each other. Realistic lighting shows "
-        "seams, divides space, and indicates moving parts.\n\n"
+        "This App nether send your password to a database, in fact your password never leave the app!."
+        "We take your password and put it in a function call Hash Function (SHA1), this function give "
+        "us back an unique set of 40 characters like those :  \n\n"
+        "cf23df2207d99a74fbe169e3eba035e633b65d94 \n\n\n "
+        "Then we take the first 5 characters and we send them to the database of haveibeenpwned.com  "
+        "and thy give us back a list of all the 35 last characters, and their occurrence in the   "
+        "database, with the same 5 first characters corresponding to our hash function.\n"
+        "With this method you can put safely your password in this app and it will never be at risk! "
+        "\n\n"
 
-        "Bold, graphic, intentional.\n\n"
+        "This application is powered by Have I Been Pwned"
+        "(haveibeenpwned.com)\n\n"
 
-        "The foundational elements of print based design typography, grids, space, scale, color, "
-        "and use of imagery guide visual treatments. These elements do far more than please the "
-        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
-        "imagery, large scale typography, and intentional white space create a bold and graphic "
-        "interface that immerse the user in the experience.\n"
-        "An emphasis on user actions makes core functionality immediately apparent and provides "
-        "waypoints for the user.\n\n"
-
-        "Motion provides meaning.\n\n"
-
-        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
-     
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_biggest_leak">BiggestLeak</string>
