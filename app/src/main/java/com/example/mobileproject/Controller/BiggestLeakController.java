@@ -8,11 +8,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 
-import com.example.mobileproject.CustomBreachesAdapter;
 import com.example.mobileproject.Model.DataBreachesModel;
-import com.example.mobileproject.GetDataService;
+import com.example.mobileproject.Network.GetDataService;
 import com.example.mobileproject.R;
-import com.example.mobileproject.RetrofitClientInstance;
+import com.example.mobileproject.Network.RetrofitClientInstance;
 import com.example.mobileproject.View.BiggestLeakActivity;
 
 import java.util.List;

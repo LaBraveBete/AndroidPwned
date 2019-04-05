@@ -1,4 +1,4 @@
-package com.example.mobileproject;
+package com.example.mobileproject.Controller;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mobileproject.Model.DataBreachesModel;
+import com.example.mobileproject.R;
 import com.example.mobileproject.View.OnClickBreachesActivity;
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;

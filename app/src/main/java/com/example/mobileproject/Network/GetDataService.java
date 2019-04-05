@@ -1,4 +1,4 @@
-package com.example.mobileproject;
+package com.example.mobileproject.Network;
 
 import com.example.mobileproject.Model.DataBreachesModel;
 
