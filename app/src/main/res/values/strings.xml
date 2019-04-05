@@ -2,7 +2,7 @@
     <string name="app_name">mobileProject</string>
     <string name="title_activity_email_">Email_Activity</string>
     <string name="large_text">
-        "For all people paranoid here are some explications \n\n"
+        "For all paranoid people here are people some explications \n\n"
 
         "This App nether send your password to a database, in fact your password never leave the app!."
         "We take your password and put it in a function call Hash Function (SHA1), this function give "
