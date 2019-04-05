@@ -76,7 +76,8 @@ public class EmailCheckController {
                     @Override
                     public void onResponse(String response)
                     {
-                        Email_response.setText(response);
+                        String pwndEmail = "Your email have been found on the database !! You will be able to see where in the V2.  ";
+                        Email_response.setText(pwndEmail);//response in v2 + additional recycler view
                         Log.d("Response", response);
                         PwnedEmail = true;
                     }
