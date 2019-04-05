@@ -93,7 +93,7 @@ public class EmailCheckController {
                         }
                         else
                         {
-                            String Fine_email = "you'r fine ";
+                            String Fine_email = "You'r fine. We have not found your email. ";
                             Email_response.setText(Fine_email);
                             PwnedEmail = false;
                         }
